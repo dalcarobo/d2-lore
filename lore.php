@@ -10,8 +10,9 @@ while ($row = $results->fetchArray()) {
   $lore = ($row['json']);
   $a = (json_decode($lore));
 
-  $de = ['Derivante', 'Colméia', 'Despertos', 'Desperto'];
-  $para = ['Drifter', 'Hive', 'Awoken', 'Awoken'];
+  $de = ['Derivante', 'Colméia', 'Colmeia', 'Despertos', 'Desperto', 'Decaído', 'Pesadelos'];
+  $para = ['Drifter', 'Hive', 'Hive', 'Awoken', 'Awoken', 'Fallen', 'Nightmare'];
+
   $t = str_replace($de, $para, $a->displayProperties->description);
   $n = str_replace($de, $para, $a->displayProperties->name);
   $l = str_replace($de, $para, $a->subtitle);
@@ -92,6 +93,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <p class="card-text initial">
                   <i><?= str_replace("\n\n", "<br><br>", $t) ?></i>
                 </p>
+                <br>
+                <hr>
+                <a href="#" class="float-left" onclick="window.history.back();">< Voltar</a>
               </div>
             </div>
           </div>

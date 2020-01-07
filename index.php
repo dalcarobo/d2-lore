@@ -14,8 +14,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-  <link rel="stylesheet" href="plugins/datatables-bs4/css/dataTables.bootstrap4.css">
-  <link rel="stylesheet" href="plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
 </head>
 <body class="hold-transition layout-top-nav">
 <div class="wrapper">
@@ -40,18 +38,24 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <div class="container">
         <div class="row">
           <div class="col-lg-12">
-            <div class="card card-primary card-outline">
-              <div class="card-body">
-                <table id="table-lores" class="table table-hover">
-                  <thead>
-                  <tr>
-                    <th>#ID</th>
-                    <th>Título</th>
-                  </tr>
-                  </thead>
-                </table>
+
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="info-box h-100">
+                  <div class="info-box-content">
+                    <span class="info-box-text"><h1><a href="d1lore.php">Destiny</a></h1></span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="info-box  h-100">
+                  <div class="info-box-content">
+                    <span class="info-box-text"><h1><a href="d2lore.php">Destiny 2</a></h1></span>
+                  </div>
+                </div>
               </div>
             </div>
+
           </div>
         </div>
       </div>
@@ -62,60 +66,5 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script src="plugins/jquery/jquery.min.js"></script>
 <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="dist/js/adminlte.min.js"></script>
-<script src="plugins/datatables/jquery.dataTables.js"></script>
-<script src="plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
-<script src="plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
-<script>
-    $(document).ready(function () {
-
-
-        const table = $('#table-lores').DataTable({
-            paging: true,
-            lengthChange: false,
-            searching: true,
-            responsive: true,
-            ordering: true,
-            info: true,
-            autoWidth: false,
-            "language": {
-                "url": "http://cdn.datatables.net/plug-ins/1.10.20/i18n/Portuguese-Brasil.json"
-            },
-            "ajax": {
-                "url": "getLore.php",
-                "type": "POST"
-            },
-            "columns": [
-              { 'data': 'hash' },
-              {
-                  'data': null,
-                  "render": function (a, b, c) {
-                      return "<a href='lore.php?uid="+c['id']+"'>"+c['nome']+"</a>";
-                  }
-              }
-             ]
-        });
-
-
-table.draw();
-
-        /*$.ajax({
-            url: 'getLore.php',
-            method: 'POST',
-            datatype: 'json',
-            success: function (data) {
-                let r = (JSON.parse(data));
-                console.log(r);
-                $('#table-lores').DataTable({
-                    data: r,
-                    columns: [
-                        { 'data': 'hash' },
-                        { 'data': 'nome' }
-                    ]
-                });
-            }
-        });*/
-
-    });
-</script>
 </body>
 </html>
