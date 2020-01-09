@@ -69,7 +69,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script>
     $(document).ready(function () {
 
-
         const table = $('#table-lores').DataTable({
             paging: true,
             lengthChange: false,
@@ -97,6 +96,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
         });
         table.draw();
     });
+
+
+
+
+
+
+
 </script>
 </body>
 </html>

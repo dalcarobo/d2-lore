@@ -55,6 +55,29 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </div>
           </div>
         </div>
+
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="card card-primary card-outline">
+              <div class="card-body">
+                <div class="form-group">
+                  <span class="float-left"><strong>Pesquisa por termo</strong></span>
+                  <input type="text" class="form-control" id="search" name="search">
+                </div>
+              </div>
+              <div class="card-footer">
+                <a href="#" class="btn btn-primary" id="search-term">Buscar</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
       </div>
     </div>
   </div>
@@ -68,6 +91,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script src="plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
 <script>
     $(document).ready(function () {
+
 
 
         const table = $('#table-lores').DataTable({
@@ -96,6 +120,24 @@ scratch. This page gets rid of all links and provides the needed markup only.
             ]
         });
         table.draw();
+
+
+        $("#search-term").click(function(e) {
+            e.preventDefault();
+            $.ajax({
+                type: 'POST',
+                url: 'getLore.php',
+                data: {
+                    search: $("#search").val()
+                },
+                success: function (retorno) {
+                    let r = JSON.parse(retorno);
+                    table.clear().draw();
+                    table.rows.add(r.data); // Add new data
+                    table.draw();
+                }
+            });
+        });
     });
 </script>
 </body>
